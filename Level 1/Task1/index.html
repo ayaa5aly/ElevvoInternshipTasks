@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Collapsible Sidebar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="CSS/style.css" />
+  </head>
+  <body>
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <i class="fas fa-cube logo-icon"></i>
+          <span class="logo-text">Brand</span>
+        </div>
+
+        <div class="toggle-btn" id="toggleBtn">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+      </div>
+      <ul class="sidebar-menu">
+        <li>
+          <a href="#" class="active"
+            ><span class="icon"><i class="fas fa-home"></i></span
+            ><span class="menu-text">Home</span></a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><span class="icon"><i class="fas fa-chart-line"></i></span
+            ><span class="menu-text">Analysis</span></a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><span class="icon"><i class="fas fa-tasks"></i></span
+            ><span class="menu-text">Projects</span></a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><span class="icon"><i class="fas fa-envelope"></i></span
+            ><span class="menu-text">Messages</span></a
+          >
+        </li>
+        <li>
+          <a href="#"
+            ><span class="icon"><i class="fas fa-cog"></i></span
+            ><span class="menu-text">Settings</span></a
+          >
+        </li>
+      </ul>
+    </div>
+
+    <div class="mobile-toggle" id="mobileToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+
+    <script src="JS/script.js"></script>
+  </body>
+</html>
