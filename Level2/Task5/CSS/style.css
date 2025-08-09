@@ -1,0 +1,87 @@
+/* Custom animations */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Feature cards hover effect */
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card {
+  transition: all 0.3s ease;
+}
+
+/* Pricing card highlight */
+.pricing-card.popular {
+  border: 2px solid #6366f1;
+  position: relative;
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  right: 20px;
+  background: #6366f1;
+  color: white;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Dark mode overrides */
+.dark .dark\:bg-dark-primary {
+  background-color: #1f2937;
+}
+
+.dark .dark\:bg-dark-secondary {
+  background-color: #111827;
+}
+
+.dark .dark\:text-light {
+  color: #f3f4f6;
+}
+
+.dark .dark\:text-gray-300 {
+  color: #d1d5db;
+}
+
+.dark .dark\:border-gray-700 {
+  border-color: #374151;
+}
+
+/* Mobile menu */
+.mobile-menu {
+  display: none;
+}
+
+.mobile-menu.active {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.dark .mobile-menu.active {
+  background-color: #1f2937;
+}
