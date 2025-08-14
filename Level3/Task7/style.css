@@ -26,6 +26,11 @@ body:before {
   background: rgb(0, 0, 0, 0.15);
   backdrop-filter: blur(15px);
 }
+.loader {
+  font-size: 18px;
+  font-weight: 500;
+}
+
 .regular-txt {
   font-weight: 400;
 }

@@ -34,6 +34,39 @@ cityInput.addEventListener("keydown", (event) => {
     cityInput.blur();
   }
 });
+window.addEventListener("load", () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      async (position) => {
+        const { latitude, longitude } = position.coords;
+        const weatherData = await getFetchDataByCoords(
+          "weather",
+          latitude,
+          longitude
+        );
+
+        if (weatherData.cod === 200) {
+          updateWeatherInfo(weatherData.name);
+        }
+      },
+      () => {
+        console.log("Location permission denied or unavailable.");
+      }
+    );
+  }
+});
+function showLoader() {
+  document.querySelector(".loader").style.display = "block";
+}
+function hideLoader() {
+  document.querySelector(".loader").style.display = "none";
+}
+
+async function getFetchDataByCoords(endPoint, lat, lon) {
+  const apiUrl = `https://api.openweathermap.org/data/2.5/${endPoint}?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
+  const response = await fetch(apiUrl);
+  return response.json();
+}
 
 async function getFetchData(endPoint, city) {
   const apiUrl = `https://api.openweathermap.org/data/2.5/${endPoint}?q=${city}&appid=${apiKey}&units=metric`;
@@ -64,6 +97,8 @@ function getCurrentDate() {
 }
 
 async function updateWeatherInfo(city) {
+  showLoader();
+
   const weatherDate = await getFetchData("weather", city);
 
   if (weatherDate.cod != 200) {
@@ -88,6 +123,8 @@ async function updateWeatherInfo(city) {
   weatherSummaryImg.src = `assets/weather/${getWeatherIcon(id)}`;
 
   await updateForecastsInfo(city);
+  hideLoader();
+
   showDisplaySection(weatherInfoSection);
 }
 async function updateForecastsInfo(city) {
@@ -132,6 +169,7 @@ function updateForecastsItems(weatherData) {
 
   forecastItemsContainer.insertAdjacentHTML("beforeend", forecastItem);
 }
+
 function showDisplaySection(section) {
   [weatherInfoSection, searchCitySection, notFoundSection].forEach(
     (section) => (section.style.display = "none")
